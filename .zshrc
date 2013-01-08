@@ -246,3 +246,6 @@ fi
 
 # Ctrl-sの端末ロックを無効にする
 stty stop undef
+
+# mosh
+compdef mosh=ssh
