@@ -249,3 +249,6 @@ stty stop undef
 
 # mosh
 compdef mosh=ssh
+
+# z
+. `brew --prefix`/etc/profile.d/z.sh
