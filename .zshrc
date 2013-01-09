@@ -14,7 +14,7 @@ export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 
 # path
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/bin:${PATH}"
 
 # スラッシュを単語の一部とみなさない
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -154,13 +154,13 @@ esac
 ### RVM ###
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
-### Macports ###
-case "${OSTYPE}" in
-  darwin*)
-    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
-  ;;
-esac
+#### Macports ###
+#case "${OSTYPE}" in
+#  darwin*)
+#    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+#    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
+#  ;;
+#esac
 
 ### Aliases ###
 #alias r=rails
