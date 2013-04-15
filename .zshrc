@@ -15,6 +15,7 @@ export AUTOFEATURE=true  # autotestでfeatureを動かす
 
 # path
 export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/bin:${PATH}"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # スラッシュを単語の一部とみなさない
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -239,7 +240,7 @@ fi
 #bindkey '^' cdup
 
 # rbenv
-if which rbenv > /dev/null; then
+if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
   source ~/.rbenv/completions/rbenv.zsh
 fi
@@ -251,4 +252,13 @@ stty stop undef
 compdef mosh=ssh
 
 # z
-. `brew --prefix`/etc/profile.d/z.sh
+if which brew > /dev/null 2>&1; then
+  . `brew --prefix`/etc/profile.d/z.sh
+fi
+
+case ${OSTYPE} in
+  darwin*)
+    ;;
+  linux*)
+    ;;
+esac
