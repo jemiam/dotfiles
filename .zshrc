@@ -13,10 +13,6 @@ export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 
-# path
-export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/bin:${PATH}"
-export PATH="$HOME/.rbenv/bin:$PATH"
-
 # スラッシュを単語の一部とみなさない
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
