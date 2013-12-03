@@ -1,8 +1,5 @@
 #!/bin/bash
 
-dot_files=( .vimrc .zshrc .tmux.conf .screenrc)
-
-for file in ${dot_files[@]}
-do
-  ln -sf $HOME/dotfiles/$file $HOME/$file
+find . -name ".*" -mindepth 1 -maxdepth 1 | while read line; do
+  ln -sfn $HOME/dotfiles/$line $HOME/$line
 done
