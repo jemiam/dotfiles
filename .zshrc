@@ -13,9 +13,6 @@ export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 
-# path
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-
 # スラッシュを単語の一部とみなさない
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
@@ -154,13 +151,13 @@ esac
 ### RVM ###
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
-### Macports ###
-case "${OSTYPE}" in
-  darwin*)
-    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
-  ;;
-esac
+#### Macports ###
+#case "${OSTYPE}" in
+#  darwin*)
+#    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+#    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
+#  ;;
+#esac
 
 ### Aliases ###
 #alias r=rails
@@ -239,10 +236,25 @@ fi
 #bindkey '^' cdup
 
 # rbenv
-if which rbenv > /dev/null; then
+if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
   source ~/.rbenv/completions/rbenv.zsh
 fi
 
 # Ctrl-sの端末ロックを無効にする
 stty stop undef
+
+# mosh
+compdef mosh=ssh
+
+# z
+if which brew > /dev/null 2>&1; then
+  . `brew --prefix`/etc/profile.d/z.sh
+fi
+
+case ${OSTYPE} in
+  darwin*)
+    ;;
+  linux*)
+    ;;
+esac
