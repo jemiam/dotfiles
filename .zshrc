@@ -236,6 +236,7 @@ fi
 #bindkey '^' cdup
 
 # rbenv
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
   source ~/.rbenv/completions/rbenv.zsh
@@ -250,6 +251,11 @@ compdef mosh=ssh
 # z
 if which brew > /dev/null 2>&1; then
   . `brew --prefix`/etc/profile.d/z.sh
+
+  # online help
+  unalias run-help
+  autoload run-help
+  HELPDIR=/usr/local/share/zsh/helpfiles
 fi
 
 case ${OSTYPE} in
