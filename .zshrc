@@ -13,9 +13,6 @@ export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
 
-# path
-export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/bin:${PATH}"
-
 # スラッシュを単語の一部とみなさない
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
@@ -239,7 +236,8 @@ fi
 #bindkey '^' cdup
 
 # rbenv
-if which rbenv > /dev/null; then
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
   source ~/.rbenv/completions/rbenv.zsh
 fi
@@ -251,4 +249,18 @@ stty stop undef
 compdef mosh=ssh
 
 # z
-. `brew --prefix`/etc/profile.d/z.sh
+if which brew > /dev/null 2>&1; then
+  . `brew --prefix`/etc/profile.d/z.sh
+
+  # online help
+  unalias run-help
+  autoload run-help
+  HELPDIR=/usr/local/share/zsh/helpfiles
+fi
+
+case ${OSTYPE} in
+  darwin*)
+    ;;
+  linux*)
+    ;;
+esac
