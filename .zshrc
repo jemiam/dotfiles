@@ -238,6 +238,9 @@ fi
 # rbenv
 if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
+fi
+
+if [[ -f ~/.rbenv/completions/rbenv.zsh ]]; then
   source ~/.rbenv/completions/rbenv.zsh
 fi
 
