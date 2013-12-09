@@ -1,7 +1,21 @@
 #!/bin/bash
 
-find . -mindepth 1 -maxdepth 1 -name ".*" | while read line; do
-  ln -sfn $HOME/dotfiles/$line $HOME/$line
+dotfiles="
+.gitmodules
+.gitattributes
+.gitconfig
+.gitignore
+.setup.sh.swp
+.screenrc
+.tmux.conf
+.vim
+.vimrc
+.zshenv
+.zshrc
+"
+
+for $file in $dotfiles; do
+  ln -sfn $HOME/dotfiles/$file $HOME/$file
 done
 
 chsh -s /bin/zsh
