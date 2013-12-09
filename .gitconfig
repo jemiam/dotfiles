@@ -1,0 +1,17 @@
+[github]
+  user = ejima
+[user]
+  email = jemiam@gmail.com
+  name = Manabu Ejima
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  grep = auto
+[push]
+  default = current
+[core]
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
