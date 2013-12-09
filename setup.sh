@@ -1,5 +1,7 @@
 #!/bin/bash
 
-find . -name ".*" -mindepth 1 -maxdepth 1 | while read line; do
+find . -mindepth 1 -maxdepth 1 -name ".*" | while read line; do
   ln -sfn $HOME/dotfiles/$line $HOME/$line
 done
+
+~/.vim/bundle/neobundle.vim/bin/neoinstall
