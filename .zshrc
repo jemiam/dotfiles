@@ -254,6 +254,7 @@ compdef mosh=ssh
 # z
 if which brew > /dev/null 2>&1; then
   . `brew --prefix`/etc/profile.d/z.sh
+  alias ctags="`brew --prefix`/bin/ctags"
 
   # online help
   unalias run-help
