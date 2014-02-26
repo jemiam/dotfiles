@@ -1,0 +1,41 @@
+set nocompatible               " be iMproved
+filetype off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+" originalrepos on github
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+"NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'epeli/slimux'
+NeoBundle 'vim-ruby/vim-ruby'
+
+filetype plugin indent on     " required!
+
+
+"
+" Brief help
+" :NeoBundleList          - list configured bundles
+" :NeoBundleInstall(!)    - install(update) bundles
+" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
+endif
+
+"" vim-sime
+"let g:slime_target = "tmux"
+
+" Slimux
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
