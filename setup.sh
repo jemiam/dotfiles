@@ -15,7 +15,7 @@ dotfiles="
 .zshrc
 "
 
-for $file in $dotfiles; do
+for file in $dotfiles; do
   ln -sfn $HOME/dotfiles/$file $HOME/$file
 done
 
