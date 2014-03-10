@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dotfiles="
+.gemrc
 .gitmodules
 .gitattributes
 .gitconfig
