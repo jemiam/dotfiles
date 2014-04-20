@@ -15,6 +15,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 "NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'epeli/slimux'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'rking/ag.vim'
 
 filetype plugin indent on     " required!
 
