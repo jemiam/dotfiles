@@ -11,6 +11,7 @@ dotfiles="
 .tmux.conf
 .vim
 .vimrc
+.vimrc.neobundle
 .zshenv
 .zshrc
 "
