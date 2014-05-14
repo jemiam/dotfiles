@@ -16,6 +16,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'epeli/slimux'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'gist:mattn/4975267', { 'name': 'dash.vim', 'script_type': 'plugin' }
 
 filetype plugin indent on     " required!
 
