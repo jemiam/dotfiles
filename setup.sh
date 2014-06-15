@@ -6,7 +6,6 @@ dotfiles="
 .gitattributes
 .gitconfig
 .gitignore
-.setup.sh.swp
 .screenrc
 .tmux.conf
 .vim
