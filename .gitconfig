@@ -13,5 +13,6 @@
 [push]
   default = current
 [core]
+  editor = vim
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
