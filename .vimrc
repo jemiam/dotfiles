@@ -25,7 +25,7 @@ set showmatch
 set smartcase
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set tabstop=2
-set wildmode=full:list
+set wildmode=longest,list,full
 set clipboard=unnamed
 
 :set encoding=utf-8

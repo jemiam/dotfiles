@@ -164,6 +164,15 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 #alias v=vim
 alias ls='ls -F'
 alias ll='ls -l'
+alias vim="reattach-to-user-namespace vim"
+
+alias b='bundle'
+alias bi='bundle install'
+alias be='bundle exec'
+alias bs='bundle show'
+bcd(){
+  cd $(bs $1)
+}
 
 # cdコマンド実行後、lsを実行する
 #function cd() {
