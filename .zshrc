@@ -164,7 +164,6 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 #alias v=vim
 alias ls='ls -F'
 alias ll='ls -l'
-alias vim="reattach-to-user-namespace vim"
 
 alias b='bundle'
 alias bi='bundle install'
