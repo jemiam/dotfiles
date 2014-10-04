@@ -1,5 +1,8 @@
 export PATH="${HOME}/.rbenv/bin:${HOME}/bin:${PATH}"
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 case ${OSTYPE} in
   darwin*)
     ;;
