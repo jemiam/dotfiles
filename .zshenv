@@ -1,4 +1,4 @@
-export PATH="${HOME}/.rbenv/bin:${HOME}/bin:${PATH}"
+export PATH="/usr/local/bin:${PATH}"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
