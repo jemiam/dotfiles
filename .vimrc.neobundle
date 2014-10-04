@@ -17,6 +17,7 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet-snippets'
 "NeoBundle 'jpalardy/vim-slime'
@@ -48,3 +49,6 @@ endif
 " Slimux
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+" VimFiler
+"autocmd VimEnter * VimFiler -split -simple -winwidth=30 -no-quit
+let g:vimfiler_as_default_explorer = 1
