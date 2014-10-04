@@ -18,6 +18,7 @@
   attributesfile = ~/.gitattributes
 [alias]
   co = checkout
+  st = status -s
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 [filter "media"]
 	clean = git-media-clean %f
