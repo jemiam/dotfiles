@@ -167,7 +167,10 @@ alias ll='ls -l'
 
 alias b='bundle'
 alias bi='bundle install'
+alias bu='bundle update'
+alias bc='bundle clean'
 alias be='bundle exec'
+alias ber='bundle exec rails'
 alias bs='bundle show'
 bcd(){
   cd $(bs $1)
@@ -244,14 +247,15 @@ fi
 #bindkey '^' cdup
 
 # rbenv
-#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-if which rbenv > /dev/null 2>&1; then
-  eval "$(rbenv init -)"
-fi
-
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if [[ -f ~/.rbenv/completions/rbenv.zsh ]]; then
   source ~/.rbenv/completions/rbenv.zsh
 fi
+
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# pyenv-virtualenv
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Ctrl-sの端末ロックを無効にする
 stty stop undef
