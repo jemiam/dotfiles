@@ -16,10 +16,13 @@
   editor = vim
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
+	quotepath = false
 [alias]
   co = checkout
   st = status -s
+  ig = clean -ndX
   delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
