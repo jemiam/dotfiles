@@ -25,6 +25,7 @@ NeoBundle 'epeli/slimux'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'gist:mattn/4975267', { 'name': 'dash.vim', 'script_type': 'plugin' }
+NeoBundle 'scrooloose/syntastic'
 
 filetype plugin indent on     " required!
 
@@ -52,3 +53,8 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 " VimFiler
 "autocmd VimEnter * VimFiler -split -simple -winwidth=30 -no-quit
 let g:vimfiler_as_default_explorer = 1
+
+" syntastic
+let g:syntastic_mode_map = { 'mode': 'passive',
+            \ 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
