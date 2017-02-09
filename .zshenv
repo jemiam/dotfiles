@@ -22,3 +22,15 @@ esac
 # android sdk
 export ANDROID_HOME="${HOME}/android-sdk"
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools
+
+# google cloud sdk
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+# smarby inc
+export SMTP_SERVER=smtp.gmail.com
+export SMTP_USERNAME=ejima
+export SMTP_PASSWORD=oohanabi1
+export SLACK_WEB_HOOK=hook
+export SLACK_CHANNEL=test-notification
+export SYNC_ROOT_DIR=/Users/ejima/work/smarby/piglet

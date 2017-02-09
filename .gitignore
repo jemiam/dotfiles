@@ -2,3 +2,5 @@
 .ctags
 tags
 .vim/.netrwhist
+.vim/tmp
+.DS_store

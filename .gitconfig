@@ -21,8 +21,24 @@
   co = checkout
   st = status -s
   ig = clean -ndX
-  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  delete-merged-branches = !git branch --merged | grep -vE '^\\*|master|develop$' | xargs -n 1 git branch -d
+  cb = rev-parse --abbrev-ref HEAD
+  diffc = diff --name-only --diff-filter=U
+  showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+  openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
+  update-master = !git checkout master && git fetch --prune && git merge origin/master
+  um = !git update-master
+  update-develop = !git checkout develop && git fetch --prune && git merge origin/develop
+  ud = !git update-develop
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

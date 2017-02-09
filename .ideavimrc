@@ -1,1 +1,4 @@
-inoremap <c-]> <esc>
+"noremap <c-]> <esc>
+map <c-]> <esc>
+imap <c-]> <esc>
+vmap <c-]> <esc>

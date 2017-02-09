@@ -137,7 +137,7 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
 
 ### Title (user@hostname) ###
 case "${TERM}" in
-kterm*|xterm*|)
+(kterm*|xterm*|)
   precmd() {
     echo -ne "\033]0;${USER}@${HOST%%.*}\007"
   }
@@ -172,6 +172,8 @@ alias bc='bundle clean'
 alias be='bundle exec'
 alias ber='bundle exec rails'
 alias bs='bundle show'
+alias clear2="echo -e '\026\033c'"
+
 bcd(){
   cd $(bs $1)
 }
@@ -252,6 +254,10 @@ if [[ -f ~/.rbenv/completions/rbenv.zsh ]]; then
   source ~/.rbenv/completions/rbenv.zsh
 fi
 
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
 # pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # pyenv-virtualenv
@@ -298,3 +304,21 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# zmv
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
+
+# grep For all non-ascii characters
+function grep-mbchar() {
+  ag "[\x80-\xFF]" $*
+}
+
+# direnv
+eval "$(direnv hook zsh)"
+
+function rmswp() {
+  rm **/.*.swp
+}
+
+# clear console
+alias clear2="echo -e '\026\033c'"
