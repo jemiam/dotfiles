@@ -4,7 +4,7 @@
   rescue LoadError
   end
 end
-Pry.config.editor = "mate -w"
+Pry.config.editor = "vim"
 
 begin
     require 'awesome_print'
