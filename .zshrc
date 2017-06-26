@@ -275,9 +275,9 @@ if which brew > /dev/null 2>&1; then
   alias ctags="`brew --prefix`/bin/ctags"
 
   # online help
-  unalias run-help
-  autoload run-help
-  HELPDIR=/usr/local/share/zsh/helpfiles
+  #unalias run-help
+  #autoload run-help
+  #HELPDIR=/usr/local/share/zsh/helpfiles
 fi
 
 case ${OSTYPE} in
