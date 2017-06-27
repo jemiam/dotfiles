@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# http://blog.kazuhooku.com/2017/03/peco.html
+# http://jsapachehtml.hatenablog.com/entry/2014/11/30/222225
+# https://linuxjm.osdn.jp/html/GNU_findutils/man1/xargs.1.html
+
+exec ack "$@" . | peco --exec 'awk -F : '"'"'{print "+" $2 " " $1}'"'"' | xargs bash -c '"'"'vim "$@" </dev/tty'"'"' vim'

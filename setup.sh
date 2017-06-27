@@ -25,6 +25,9 @@ done
 # for system wide install
 # cp rbenv.sh /etc/profile.d/
 
+mkdir -p $HOME/bin
+cp pero $HOME/bin/
+
 git submodule update --init
 git submodule foreach 'git fetch;git checkout master; git merge origin/master'
 
