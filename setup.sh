@@ -7,6 +7,7 @@ dotfiles="
 .gitconfig
 .gitignore
 .ideavimrc
+.irbrc
 .pryrc
 .rspec
 .screenrc
