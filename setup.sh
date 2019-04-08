@@ -27,9 +27,9 @@ done
 # cp rbenv.sh /etc/profile.d/
 
 mkdir -p $HOME/bin
-cp pero $HOME/bin/
+cp $HOME/dotfiles/pero $HOME/bin/
 
 git submodule update --init
 git submodule foreach 'git fetch;git checkout master; git merge origin/master'
 
-~/.vim/bundle/neobundle.vim/bin/neoinstall
+$HOME/.vim/bundle/neobundle.vim/bin/neoinstall
