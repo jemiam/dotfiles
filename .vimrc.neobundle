@@ -21,10 +21,11 @@ if has('vim_starting')
   NeoBundle 'Shougo/vimfiler.vim'
   NeoBundle 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neosnippet-snippets'
+  "NeoBundle 'szw/vim-tags'
   NeoBundle 'vim-ruby/vim-ruby'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'gist:mattn/4975267', { 'name': 'dash.vim', 'script_type': 'plugin' }
-  NeoBundle 'scrooloose/syntastic'
+  "NeoBundle 'scrooloose/syntastic'
   NeoBundle 'bronson/vim-trailing-whitespace'
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'chase/vim-ansible-yaml'
@@ -32,6 +33,7 @@ if has('vim_starting')
   NeoBundle 'elixir-lang/vim-elixir'
   NeoBundle 'kana/vim-operator-user'
   NeoBundle 'hashivim/vim-terraform'
+  NeoBundle 'stephpy/vim-yaml'
   NeoBundleLazy 'rhysd/vim-clang-format', {
                 \ 'autoload' : {'filetypes' : ['c', 'cpp', 'objc']}
                 \ }
@@ -66,3 +68,7 @@ filetype plugin indent on     " required!
 
 " vim-clang-format
 map ,x <Plug>(operator-clang-format)
+
+" vim-tags
+"let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
+"let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"

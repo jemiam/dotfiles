@@ -3,5 +3,6 @@
 tags
 .vim/.netrwhist
 .vim/tmp/*
+.vim/undodir/*
 !.vim/tmp/.gitkeep
 .DS_store

@@ -3,7 +3,6 @@
 [user]
   email = jemiam@gmail.com
   name = Manabu Ejima
-
 [color]
   branch = auto
   diff = auto
@@ -16,7 +15,7 @@
   editor = vim
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
-	quotepath = false
+  quotepath = false
 [alias]
   co = checkout
   st = status -s
@@ -25,11 +24,20 @@
   cb = rev-parse --abbrev-ref HEAD
   diffc = diff --name-only --diff-filter=U
   showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+  spr = !git showpr
   openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
+  opr = !git openpr
   update-master = !git checkout master && git fetch --prune && git merge origin/master
   um = !git update-master
   update-develop = !git checkout develop && git fetch --prune && git merge origin/develop
   ud = !git update-develop
+  bpr = !git-blame-pr.pl
+  open-bpr = "!f() { r=$(git bpr $1 | peco); echo $r | cut -f2 -d ' ' | cut -c2- | xargs -I {} hub browse -- pull/{}; }; f"
+  frs = !git flow release start
+  frf = !git flow release finish
+[diff "ansible-vault"]
+  textconv = ansible-vault view
+  cachetextconv = true
 [filter "media"]
 	required = true
 	clean = git media clean %f
