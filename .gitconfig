@@ -18,8 +18,10 @@
   quotepath = false
 [alias]
   co = checkout
+  cp = cherry-pick
   st = status -s
   ig = clean -ndX
+  lo = log --oneline
   delete-merged-branches = !git branch --merged | grep -vE '^\\*|master|develop$' | xargs -n 1 git branch -d
   cb = rev-parse --abbrev-ref HEAD
   diffc = diff --name-only --diff-filter=U
@@ -31,6 +33,9 @@
   um = !git update-master
   update-develop = !git checkout develop && git fetch --prune && git merge origin/develop
   ud = !git update-develop
+  update-staging = !git checkout staging && git fetch --prune && git merge origin/staging
+  us = !git update-staging
+  udm = !git ud && git um
   bpr = !git-blame-pr.pl
   open-bpr = "!f() { r=$(git bpr $1 | peco); echo $r | cut -f2 -d ' ' | cut -c2- | xargs -I {} hub browse -- pull/{}; }; f"
   frs = !git flow release start

@@ -255,13 +255,13 @@ if [[ -f ~/.rbenv/completions/rbenv.zsh ]]; then
 fi
 
 # anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init - zsh)"
+#export PATH="$HOME/.anyenv/bin:$PATH"
+#eval "$(anyenv init - zsh)"
 
-# pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init - zsh)"; fi
-# pyenv-virtualenv
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+## pyenv
+#if which pyenv > /dev/null; then eval "$(pyenv init - zsh)"; fi
+## pyenv-virtualenv
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Ctrl-sの端末ロックを無効にする
 stty stop undef
@@ -333,3 +333,6 @@ fi
 if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]]; then
   source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 fi
+
+# zsh-completion
+fpath=(/usr/local/share/zsh-completions $fpath)

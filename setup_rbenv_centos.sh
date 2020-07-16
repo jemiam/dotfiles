@@ -8,6 +8,6 @@ chgrp -R rbenv rbenv
 chmod -R g+rwxXs rbenv
 git clone git://github.com/sstephenson/ruby-build.git ruby-build
 cd ruby-build
-./install.sh
+$HOME/install.sh
 
 

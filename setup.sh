@@ -1,6 +1,10 @@
 #!/bin/bash
 
+CURRENT_DIR=$(cd $(dirname $0); pwd)
+
 dotfiles="
+.aws
+.bundle
 .gemrc
 .gitmodules
 .gitattributes
@@ -14,22 +18,17 @@ dotfiles="
 .tmux.conf
 .vim
 .vimrc
-.vimrc.neobundle
+.vimrc.vim-plug
 .zshenv
 .zshrc
 "
 
 for file in $dotfiles; do
-  ln -sfn $HOME/dotfiles/$file $HOME/$file
+  ln -sfn $CURRENT_DIR/$file $HOME/$file
 done
 
 # for system wide install
 # cp rbenv.sh /etc/profile.d/
 
 mkdir -p $HOME/bin
-cp $HOME/dotfiles/pero $HOME/bin/
-
-git submodule update --init
-git submodule foreach 'git fetch;git checkout master; git merge origin/master'
-
-$HOME/.vim/bundle/neobundle.vim/bin/neoinstall
+cp $CURRENT_DIR/pero $HOME/bin/

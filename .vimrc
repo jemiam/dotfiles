@@ -1,5 +1,5 @@
 " neobunlde
-source ~/dotfiles/.vimrc.neobundle
+source ~/.vimrc.vim-plug
 
 set nocompatible
 syntax on

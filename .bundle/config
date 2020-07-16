@@ -1,0 +1,5 @@
+---
+BUNDLE_BUILD__LIBV8: "--with-system-v8"
+#BUNDLE_BUILD__PUMA: "--with-opt-dir=/usr/local/opt/openssl --with-cppflags=-I/usr/local/opt/openssl/include --with-ldflags=-L/usr/local/opt/openssl/lib"
+BUNDLE_CONSOLE: "pry"
+BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries"

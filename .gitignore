@@ -5,4 +5,5 @@ tags
 .vim/tmp/*
 .vim/undodir/*
 !.vim/tmp/.gitkeep
+!.vim/undodir/.gitkeep
 .DS_store
