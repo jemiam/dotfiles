@@ -19,9 +19,11 @@
 [alias]
   co = checkout
   cp = cherry-pick
+  cf = commit --fixup
   st = status -s
   ig = clean -ndX
   lo = log --oneline
+  ria = rebase -i --autosquash
   delete-merged-branches = !git branch --merged | grep -vE '^\\*|master|develop$' | xargs -n 1 git branch -d
   cb = rev-parse --abbrev-ref HEAD
   diffc = diff --name-only --diff-filter=U
