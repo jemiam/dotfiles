@@ -1,0 +1,58 @@
+sudo sed -i.bak -e 's%http://archive.ubuntu.com/ubuntu/%http://ftp.tsukuba.wide.ad.jp/Linux/ubuntu/%g' /etc/apt/sources.list
+
+sudo visudo
+# jemiam  ALL=(ALL) NOPASSWD:ALL
+
+# powerline
+# https://docs.microsoft.com/ja-jp/windows/terminal/tutorials/powerline-setup
+
+sudo update-alternatives --set editor /usr/bin/vim.basic.basic
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y fish
+
+# clipboard support
+sudo apt install vim-gnome
+
+# for dev
+sudo apt install -y libssl-dev
+sudo apt install -y libbz2-dev
+sudo apt install -y libreadline-dev
+sudo apt install -y libsqlite3-dev
+sudo apt install -y libffi-dev
+
+
+go get github.com/x-motemen/ghq
+
+# switch to fish
+chsh -s $(which fish)
+
+# install asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+cd ~/.asdf
+git checkout "$(git describe --abbrev=0 --tags)
+prevd
+mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+source ~/.asdf/asdf.fish
+
+# asdf python plugin
+asdf plugin add python
+
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+fisher install oh-my-fish/theme-bobthefish
+fisher install jethrokuan/z
+fisher install oh-my-fish/plugin-peco
+fisher install decors/fish-ghq
+
+
+# win32yankでクリップボードを使えるようにする
+# こっちはvimでつかえない
+# https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+
+# powerline
+# https://docs.microsoft.com/ja-jp/windows/terminal/tutorials/powerline-setup
+
+# VcXsrcでクリップボードをつかえるようにする
+# vimでもつかえる
+https://qiita.com/necojackarc/items/8129ed9e6d8083aec34a

@@ -1,4 +1,4 @@
-" neobunlde
+" vim-plug
 source ~/.vimrc.vim-plug
 
 set nocompatible
@@ -27,7 +27,8 @@ set smartcase
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set tabstop=2
 set wildmode=longest,list,full
-set clipboard=unnamed
+set clipboard&
+set clipboard^=unnamedplus
 set iskeyword+=-
 set undodir=~/.vim/undodir
 set undofile
@@ -78,3 +79,19 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]>
+
+if has("mac")
+    " mac用の設定
+elseif has("unix")
+    " unix固有の設定
+
+    " vim終了時にレジスタをクリップボードに保存
+    " https://stackoverflow.com/questions/6453595/prevent-vim-from-clearing-the-clipboard-on-exit/13576798
+    autocmd VimLeave * call system("xclip -selection clipboard -i", getreg('+'))
+elseif has("win64")
+    " 64bit_windows固有の設定
+elseif has("win32unix")
+    " Cygwin固有の設定
+elseif has("win32")
+    " 32bit_windows固有の設定
+endif

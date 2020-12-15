@@ -58,3 +58,6 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[ghq]
+	root = /home/jemiam/go/src
+	root = /home/jemiam/ghq
