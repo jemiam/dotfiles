@@ -15,6 +15,7 @@ dotfiles="
 .gitignore
 .ideavimrc
 .irbrc
+.kaggle
 .pryrc
 .rspec
 .vimrc
