@@ -95,3 +95,7 @@ elseif has("win32unix")
 elseif has("win32")
     " 32bit_windows固有の設定
 endif
+
+" sudo忘れたときに
+" wで一瞬固まるので使わない
+"cnoremap w!! w !sudo tee > /dev/null %

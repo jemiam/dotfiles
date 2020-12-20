@@ -8,8 +8,11 @@ setopt no_global_rcs
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
 
 case ${OSTYPE} in
   darwin*)
@@ -39,3 +42,12 @@ export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
 export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export JAVA_HOME=`/usr/libexec/java_home -v 14`
+
+export AWS_PROFILE=development
+
+export GOPRIVATE=github.com/Kyash
+#export GO111MODULE=off
+export GOENV_DISABLE_GOPATH=1

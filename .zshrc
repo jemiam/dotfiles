@@ -263,6 +263,9 @@ fi
 ## pyenv-virtualenv
 #if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# goenv
+if which goenv > /dev/null; then eval "$(goenv init - zsh)"; fi
+
 # Ctrl-sの端末ロックを無効にする
 stty stop undef
 
@@ -336,3 +339,41 @@ fi
 
 # zsh-completion
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+##################
+# Kyashの設定
+##################
+
+# SAML認証のprofile切替え
+aws-profile-switch() {
+  local profile="$(grep '\[' ~/.aws/credentials | sed -e 's/\[//' -e 's/\]//' | peco)"
+  export AWS_PROFILE="$profile"
+}
+
+eval `ssh-agent`
+ssh-add
+
+ssm-start-session() {
+  local arg="$*"
+  local instance
+  aws ssm describe-instance-information | jq -r '.InstanceInformationList[].InstanceId' > /tmp/ssm-instances
+  instance=$(
+    aws ec2 describe-instances \
+    --instance-ids $(cat /tmp/ssm-instances) \
+    --filters "Name=instance-state-name,Values=running" |
+      jq -cr '
+        .Reservations[].Instances[] |
+          [
+            .InstanceId,
+            (.Tags[] | select(.Key == "Product").Value),
+            (.Tags[] | select(.Key == "Env").Value),
+            (.Tags[] | select(.Key == "Name").Value)
+          ] |
+          @tsv
+      ' | sort -bk 2 | peco --query "$arg"
+  )
+
+  test -z "$instance" && return
+  echo "---> $instance"
+  aws ssm start-session --target "$(echo $instance | awk '{print $1}')"
+}

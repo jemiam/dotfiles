@@ -24,7 +24,7 @@
   ig = clean -ndX
   lo = log --oneline
   ria = rebase -i --autosquash
-  delete-merged-branches = !git branch --merged | grep -vE '^\\*|master|develop$' | xargs -n 1 git branch -d
+  delete-merged-branches = !"git branch --merged | grep -vE '(\\*|main|master|staging|develop|development|experimental)$' | xargs -n 1 git branch -d"
   cb = rev-parse --abbrev-ref HEAD
   diffc = diff --name-only --diff-filter=U
   showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
@@ -61,3 +61,11 @@
 [ghq]
 	root = /home/jemiam/go/src
 	root = /home/jemiam/ghq
+[url "https://0e6f99c04d9180dd6ea408eddc9187b9a531bf3a:x-oauth-basic@github.com/Kyash"]
+	insteadOf = https://github.com/Kyash
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[pull]
+	rebase = true
+[url "https://0e6f99c04d9180dd6ea408eddc9187b9a531bf3a:x-oauth-basic@github.com/"]
+	insteadOf = https://github.com/

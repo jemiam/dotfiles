@@ -32,3 +32,11 @@ done
 
 mkdir -p $HOME/bin
 cp $CURRENT_DIR/pero $HOME/bin/
+
+#
+# https://qiita.com/ayihis@github/items/88f627b2566d6341a741
+#
+# tmux起動時に以下がでたら
+#
+# zsh compinit: insecure directories, run compaudit for list.
+# Ignore insecure directories and continue [y] or abort compinit [n]?
