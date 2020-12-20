@@ -15,7 +15,8 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'hashivim/vim-terraform'
 Plug 'stephpy/vim-yaml'
 Plug 'Vimjas/vim-python-pep8-indent'
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
+"Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
@@ -27,3 +28,6 @@ call plug#end()
 "let g:ale_fixers = {
 "\   'ruby': ['rubocop'],
 "\}
+
+"" syntastic
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
