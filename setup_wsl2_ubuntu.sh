@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eo
+set -e
 
 CURRENT_DIR=$(cd $(dirname $0); pwd)
 
