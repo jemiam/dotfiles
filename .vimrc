@@ -10,6 +10,8 @@ syntax on
 
 set autoindent
 set backspace=indent,eol,start
+" turn off beep
+set belloff=all
 set directory=~/.vim/tmp
 set expandtab
 set nobackup

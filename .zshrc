@@ -44,6 +44,13 @@ setopt equals            # =commandを`which command`と同じ処理にする
 # rm * を実行する前に確認される。
 #setopt rmstar_wait
 
+# asdf
+. $HOME/.asdf/asdf.sh
+
+# completion
+fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(${ASDF_DIR}/completions $fpath)
+
 ### Complement ###
 autoload -U compinit; compinit # 補完機能を有効にする
 setopt auto_list               # 補完候補を一覧で表示する(d)
@@ -182,10 +189,6 @@ bcd(){
 #function cd() {
 #  builtin cd $@ && ls;
 #}
-
-# zsh-completion
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 
 # ------------------------------
 # screen & ssh
@@ -327,7 +330,7 @@ function rmswp() {
 alias clear2="echo -e '\026\033c'"
 
 # hub
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 
 # gcloud
 if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]]; then
@@ -337,8 +340,15 @@ if [[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.i
   source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 fi
 
-# zsh-completion
-fpath=(/usr/local/share/zsh-completions $fpath)
+# ipython
+alias ipython='python3 -m IPython'
+
+# コピペ用設定
+# Xサーバーと通信する
+if test -e /mnt/c/WINDOWS/System32/wsl.exe; then
+  LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+  export DISPLAY=$LOCAL_IP:0
+fi
 
 ##################
 # Kyashの設定

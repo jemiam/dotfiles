@@ -20,6 +20,8 @@ dotfiles="
 .rspec
 .vimrc
 .vimrc.vim-plug
+.zshenv
+.zshrc
 "
 
 for file in $dotfiles; do

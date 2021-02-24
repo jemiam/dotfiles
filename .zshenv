@@ -44,10 +44,18 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
-export JAVA_HOME=`/usr/libexec/java_home -v 14`
+# export JAVA_HOME=`/usr/libexec/java_home -v 14`
 
 export AWS_PROFILE=development
 
 export GOPRIVATE=github.com/Kyash
 #export GO111MODULE=off
 export GOENV_DISABLE_GOPATH=1
+
+# turn off less beep
+export LESS="$LESS -R -Q"
+# lessの文字コードをutf-8にする
+export LESSCHARSET=utf-8
+
+# pip install --userを使った時のpath
+export PATH="$HOME/.local/bin:$PATH"
