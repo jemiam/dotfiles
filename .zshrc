@@ -158,13 +158,13 @@ esac
 ### RVM ###
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
-#### Macports ###
-#case "${OSTYPE}" in
-#  darwin*)
-#    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-#    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
-#  ;;
-#esac
+case "${OSTYPE}" in
+  darwin*)
+    # gcs
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+  ;;
+esac
 
 ### Aliases ###
 #alias r=rails
@@ -349,6 +349,18 @@ if test -e /mnt/c/WINDOWS/System32/wsl.exe; then
   LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
   export DISPLAY=$LOCAL_IP:0
 fi
+
+# ghq
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '' peco-src
 
 ##################
 # Kyashの設定
