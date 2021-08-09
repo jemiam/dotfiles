@@ -45,7 +45,7 @@ setopt equals            # =commandを`which command`と同じ処理にする
 #setopt rmstar_wait
 
 # asdf
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)
