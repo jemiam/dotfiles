@@ -399,3 +399,10 @@ ssm-start-session() {
   echo "---> $instance"
   aws ssm start-session --target "$(echo $instance | awk '{print $1}')"
 }
+
+alias mmv='noglob zmv -W'
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

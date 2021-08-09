@@ -37,8 +37,8 @@ export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+#export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+#export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
 export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
