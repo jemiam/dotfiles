@@ -27,6 +27,7 @@
   lo = log --oneline
   ria = rebase -i --autosquash
   delete-merged-branches = !"git branch --merged | grep -vE '(\\*|main|master|staging|develop|development|experimental)$' | xargs -n 1 git branch -d"
+  dmb = !git delete-merged-branches
   cb = rev-parse --abbrev-ref HEAD
   diffc = diff --name-only --diff-filter=U
   showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
@@ -34,9 +35,11 @@
   openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
   opr = !git openpr
   update-master = !git checkout master && git fetch --prune && git merge origin/master
-  um = !git update-master
+  update-main = !git checkout main && git fetch --prune && git merge origin/main
+  um = !git branch -r | grep -E '^ +origin/main$' >> /dev/null && git update-main || git update-master
   update-develop = !git checkout develop && git fetch --prune && git merge origin/develop
-  ud = !git update-develop
+  update-development = !git checkout development && git fetch --prune && git merge origin/development
+  ud = !git branch -r | grep -E '^ +origin/develop$' >> /dev/null && git update-develop || git update-development
   update-staging = !git checkout staging && git fetch --prune && git merge origin/staging
   us = !git update-staging
   udm = !git ud && git um
@@ -61,5 +64,5 @@
 	smudge = git-lfs smudge %f
 	required = true
 [ghq]
-	root = /home/jemiam/go/src
-	root = /home/jemiam/ghq
+	root = ~/go/src
+	root = ~/ghq
