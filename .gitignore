@@ -7,3 +7,9 @@ tags
 !.vim/tmp/.gitkeep
 !.vim/undodir/.gitkeep
 .DS_store
+nvim/.netrwhist
+nvim/tmp/*
+nvim/undodir/*
+nvim/plugged/*
+!nvim/tmp/.gitkeep
+!nvim/undodir/.gitkeep

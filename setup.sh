@@ -30,6 +30,10 @@ done
 # for system wide install
 # cp rbenv.sh /etc/profile.d/
 
+mkdir -p $HOME/.config
+mkdir -p $HOME/.config/nvim
+ln -sfn $CURRENT_DIR/.vimrc $HOME/.config/nvim/init.vim
+
 mkdir -p $HOME/bin
 cp $CURRENT_DIR/pero $HOME/bin/
 
