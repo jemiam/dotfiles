@@ -30,7 +30,7 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set tabstop=2
 set wildmode=longest,list,full
 set clipboard&
-set clipboard^=unnamedplus
+set clipboard^=unnamed
 set iskeyword+=-
 set undodir=~/.vim/undodir
 set undofile
