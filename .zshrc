@@ -45,7 +45,9 @@ setopt equals            # =commandを`which command`と同じ処理にする
 #setopt rmstar_wait
 
 # asdf
-# . $HOME/.asdf/asdf.sh
+#. $HOME/.asdf/asdf.sh
+#echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+. /usr/local/opt/asdf/libexec/asdf.sh
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -180,6 +182,7 @@ alias be='bundle exec'
 alias ber='bundle exec rails'
 alias bs='bundle show'
 alias clear2="echo -e '\026\033c'"
+alias rm='trash'
 
 bcd(){
   cd $(bs $1)
@@ -399,3 +402,6 @@ ssm-start-session() {
   echo "---> $instance"
   aws ssm start-session --target "$(echo $instance | awk '{print $1}')"
 }
+
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
