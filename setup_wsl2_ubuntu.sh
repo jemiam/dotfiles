@@ -30,7 +30,20 @@ done
 
 ln -sfn $CURRENT_DIR/.tmux.windows.conf $HOME/.tmux.conf
 
-ln -sfn $CURRENT_DIR/config.fish $HOME/.config/fish/config.fish
+# nvim
+mkdir -p $HOME/.config
+mkdir -p $HOME/.config/nvim
+
+nvim_files="
+init.vim
+vim-lsp.vim
+vim.plug.vim
+rust.vim
+vim-gitgutter.vim
+"
+for file in $nvim_files; do
+  ln -sfn $CURRENT_DIR/nvim/$file $HOME/.config/nvim/$file
+done
 
 # for system wide install
 # cp rbenv.sh /etc/profile.d/

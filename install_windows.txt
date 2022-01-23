@@ -11,6 +11,11 @@ sudo update-alternatives --set editor /usr/bin/vim.basic.basic
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y fish
+sudo apt install -y neovim
+
+# vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # clipboard support
 sudo apt install vim-gnome
@@ -45,6 +50,8 @@ fisher install jethrokuan/z
 fisher install oh-my-fish/plugin-peco
 fisher install decors/fish-ghq
 
+# typescript-language-server
+npm install -g typescript typescript-language-server
 
 # win32yankでクリップボードを使えるようにする
 # こっちはvimでつかえない

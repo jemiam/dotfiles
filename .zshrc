@@ -45,9 +45,12 @@ setopt equals            # =commandを`which command`と同じ処理にする
 #setopt rmstar_wait
 
 # asdf
-#. $HOME/.asdf/asdf.sh
-#echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
-. /usr/local/opt/asdf/libexec/asdf.sh
+if [[ -e $HOME/.asdf/asdf.sh ]]; then
+  . $HOME/.asdf/asdf.sh
+elif [[ -e /usr/local/opt/asdf/libexec/asdf.sh ]];then
+  #echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+  . /usr/local/opt/asdf/libexec/asdf.sh
+fi
 
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)

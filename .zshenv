@@ -7,6 +7,7 @@ fi
 setopt no_global_rcs
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
@@ -53,7 +54,7 @@ export GOPRIVATE=github.com/Kyash
 export GOENV_DISABLE_GOPATH=1
 
 # turn off less beep
-export LESS="$LESS -R -Q"
+# export LESS="$LESS -R -Q"
 # lessの文字コードをutf-8にする
 export LESSCHARSET=utf-8
 

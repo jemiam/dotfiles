@@ -13,3 +13,4 @@ nvim/undodir/*
 nvim/plugged/*
 !nvim/tmp/.gitkeep
 !nvim/undodir/.gitkeep
+.kaggle/kaggle.json
