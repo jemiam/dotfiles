@@ -63,3 +63,9 @@ if defined?(PryDebugger)
   Pry.commands.alias_command 'n', 'next'
   Pry.commands.alias_command 'f', 'finish'
 end
+
+begin
+  require 'active_support'
+  require 'active_support/core_ext'
+rescue LoadError
+end

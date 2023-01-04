@@ -18,13 +18,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 
-" https://mattn.kaoriya.net/software/vim/20191231213507.htm
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'mattn/vim-lsp-icons'
-Plug 'mattn/vim-goimports'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"" https://mattn.kaoriya.net/software/vim/20191231213507.htm
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+"Plug 'mattn/vim-lsp-icons'
+"Plug 'mattn/vim-goimports'
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -34,6 +36,7 @@ call plug#end()
 source ~/.config/nvim/vim-lsp.vim
 source ~/.config/nvim/rust.vim
 source ~/.config/nvim/vim-gitgutter.vim
+source ~/.config/nvim/coc.vim
 
 "" python-mode
 "let g:pymode_python = 'python3'

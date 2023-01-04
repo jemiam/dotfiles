@@ -36,6 +36,7 @@ set clipboard^=unnamedplus
 set iskeyword+=-
 set undodir=~/.config/nvim/undodir
 set undofile
+set ttimeoutlen=10
 
 :set encoding=utf-8
 :set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
