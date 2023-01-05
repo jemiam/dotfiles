@@ -390,6 +390,7 @@ ssm-start-session() {
         .Reservations[].Instances[] |
           [
             .InstanceId,
+            .NetworkInterfaces[0].PrivateIpAddress,
             (.Tags[] | select(.Key == "Product").Value),
             (.Tags[] | select(.Key == "Env").Value),
             (.Tags[] | select(.Key == "Name").Value)
@@ -400,7 +401,7 @@ ssm-start-session() {
 
   test -z "$instance" && return
   echo "---> $instance"
-  aws ssm start-session --target "$(echo $instance | awk '{print $1}')"
+  aws ssm start-session --target "$(echo $instance | awk '{print $1}')" --document-name AWS-StartInteractiveCommand --parameters command="cd ~; bash -l"
 }
 
 # poetry
