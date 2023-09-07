@@ -1,4 +1,7 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+     "go"
+  ],
 	"languageserver": {
 		"terraform": {
 			"command": "terraform-ls",

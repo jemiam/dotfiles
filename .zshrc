@@ -273,7 +273,7 @@ fi
 #if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # goenv
-if which goenv > /dev/null; then eval "$(goenv init - zsh)"; fi
+#if which goenv > /dev/null; then eval "$(goenv init - zsh)"; fi
 
 # Ctrl-sの端末ロックを無効にする
 stty stop undef
