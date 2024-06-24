@@ -47,7 +47,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # export JAVA_HOME=`/usr/libexec/java_home -v 14`
 
-export AWS_PROFILE=development
+#export AWS_PROFILE=development
 
 export GOPRIVATE=github.com/Kyash
 #export GO111MODULE=off
@@ -60,3 +60,6 @@ export LESSCHARSET=utf-8
 
 # pip install --userを使った時のpath
 export PATH="$HOME/.local/bin:$PATH"
+
+# tfenv
+export PATH="$HOME/.tfenv/bin:$PATH"

@@ -416,3 +416,49 @@ alias mmv='noglob zmv -W'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# 以下のエラーを防ぐ
+# <3>init: (4830) ERROR: UtilConnectUnix:467: connect failed 111
+# https://github.com/microsoft/WSL/issues/7174#issuecomment-940163080
+parentof() {
+  pid=$(ps -p ${1:-$$} -o ppid=;)
+  echo ${pid// /}
+}
+
+interop_pid=$$
+
+while true ; do
+  [[ -e /run/WSL/${interop_pid}_interop ]] && break
+  interop_pid=$(parentof ${interop_pid})
+  [[ ${interop_pid} == 1 ]] && break
+done
+
+if [[ ${interop_pid} == 1 ]] ; then
+  echo "Failed to find a parent process with a working interop socket.  Interop is broken."
+else
+  export WSL_INTEROP=/run/WSL/${interop_pid}_interop
+fi
+
+# openのwsl版
+# https://zenn.dev/kaityo256/articles/open_command_on_wsl
+function open() {
+    if [ $# != 1 ]; then
+        explorer.exe .
+    else
+        if [ -e $1 ]; then
+            cmd.exe /c start $(wslpath -w $1) 2> /dev/null
+        else
+            echo "open: $1 : No such file or directory" 
+        fi
+    fi
+}
+
+# atcoder
+#alias acc++="g++ -std=gnu++17 -Wall -Wextra -O2 -DONLINE_JUDGE -DLOCAL -I/opt/boost/gcc/include -L/opt/boost/gcc/lib -I/opt/ac-library -o ./a.out"
+# alias acc++="g++-12 -std=gnu++20 -O2 -DONLINE_JUDGE -DATCODER -Wall -Wextra -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647 -I/opt/ac-library -I/opt/boost/gcc/include -L/opt/boost/gcc/lib -o a.out -lgmpxx -lgmp -I/usr/include/eigen3"
+# alias acc++="g++-12 -std=gnu++20 -O2 -DONLINE_JUDGE -DATCODER -DLOCAL -Wall -Wextra -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647 -fsanitize=address -Wshadow -I/opt/ac-library -I/opt/boost/gcc/include -L/opt/boost/gcc/lib -o a.out -I/usr/include/eigen3"
+alias acc++="g++-12 -std=gnu++20 -O2 -DONLINE_JUDGE -DATCODER -DLOCAL -Wall -Wextra -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647 -Wshadow -I/opt/ac-library -I/opt/boost/gcc/include -L/opt/boost/gcc/lib -o a.out -I/usr/include/eigen3"
+alias actest="acc++ main.cpp && oj t -S -c './a.out'"
+alias acsubmit="acc submit main.cpp -- --yes --no-open"
+alias actestrb="oj t -S -c 'ruby main.rb'"
+alias acsubmitrb="acc submit main.rb -- --yes --no-open"
