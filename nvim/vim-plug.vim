@@ -17,7 +17,6 @@ Plug 'tpope/vim-fugitive'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" https://mattn.kaoriya.net/software/vim/20191231213507.htm
@@ -30,6 +29,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
+Plug 'nicwest/vim-camelsnek'
 
 call plug#end()
 

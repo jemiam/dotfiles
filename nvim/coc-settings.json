@@ -14,9 +14,40 @@
     }
   },
   "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": ["go", "ruby", "cpp"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "css",
+    "html",
+    "markdown",
+    "typescriptreact",
+    "typescript",
+    "javascriptreact",
+    "javascript",
+    "json",
+    "graphql",
+    "php",
+    "sh",
+    "ruby",
+    "cpp"
+  ],
   "go.goplsOptions": {
     "completeUnimported": true
   },
-  "clangd.fallbackFlags": ["-std=c++20"]
+  "clangd.fallbackFlags": ["-std=c++20"],
+  "diagnostic-languageserver.filetypes": {
+    "php": ["phpcs", "phpstan"],
+    "sh": "shellcheck",
+    "yaml": ["yamllint", "actionlint"]
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt",
+    "go": "golint"
+  },
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ]
 }

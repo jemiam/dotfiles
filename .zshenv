@@ -17,6 +17,31 @@ export PATH=$GOPATH/bin:$PATH
 
 case ${OSTYPE} in
   darwin*)
+    export PATH=/opt/homebrew/bin:$PATH
+
+    # android sdk
+    #export ANDROID_HOME="${HOME}/android-sdk"
+    #export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools
+    export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
+
+    # gnu getopt
+    export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+    export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+    export PATH=/opt/homebrew/opt/mysql-client/bin:$PATH
+    #export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+    #export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+    export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+    export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+    ## google cloud sdk
+    #source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    #source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+    # php
+    # export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+    # gnubin
+    PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     ;;
   linux*)
     for i in /etc/profile.d/*.sh ; do
@@ -25,33 +50,9 @@ case ${OSTYPE} in
     ;;
 esac
 
-# android sdk
-#export ANDROID_HOME="${HOME}/android-sdk"
-#export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools
-export PATH="${HOME}/Library/Android/sdk/platform-tools:$PATH"
-
-## google cloud sdk
-#source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-#source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
-# gnu getopt
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-#export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
-#export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
-export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # export JAVA_HOME=`/usr/libexec/java_home -v 14`
-
-#export AWS_PROFILE=development
-
-export GOPRIVATE=github.com/Kyash
-#export GO111MODULE=off
-export GOENV_DISABLE_GOPATH=1
 
 # turn off less beep
 # export LESS="$LESS -R -Q"

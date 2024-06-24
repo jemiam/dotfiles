@@ -152,7 +152,18 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 """ golang
 " Add missing imports on save
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
 " Map Keys to command
 autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
 autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
 autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
+
+highlight CocErrorSign ctermfg=15 ctermbg=196
+highlight CocWarningSign ctermfg=0 ctermbg=172
+highlight CocInfoSign ctermfg=0 ctermbg=184
+highlight CocHintSign ctermfg=0 ctermbg=117
+
+highlight link FgCocErrorFloatBgCocFloating CocErrorSign
+highlight link FgCocWarningFloatBgCocFloating CocWarningSign
+highlight link FgCocInfoFloatBgCocFloating CocInfoWarningSign
+highlight link FgCocHintFloatBgCocFloating CocHintSign

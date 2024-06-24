@@ -19,6 +19,9 @@
   pager = less -F -X
 [alias]
   c  = commit
+  ca = commit --amend --no-edit
+  p = push
+  pf = push --force-with-lease
   co = checkout
   cp = cherry-pick
   cf = commit --fixup
@@ -51,6 +54,7 @@
   cl = "!f() { dir=$(echo $1 | cut -f4 -d '/'); mkdir -p $dir; cd $dir; git clone $1; }; f"
   logall = !git log --all --full-history
   la = logall
+  bs = !git branch --show-current
 [diff "ansible-vault"]
   textconv = ansible-vault view
   cachetextconv = true
@@ -69,3 +73,8 @@
 [ghq]
 	root = ~/go/src
 	root = ~/ghq
+[safe]
+	directory = /srv
+	directory = /xxx/xxx
+	directory = .
+	directory = /Users/ejima_manabu/ghq/github.com/openlogi/datadog-terraform

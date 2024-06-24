@@ -50,9 +50,12 @@ if [[ -e $HOME/.asdf/asdf.sh ]]; then
 elif [[ -e /usr/local/opt/asdf/libexec/asdf.sh ]];then
   #echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
   . /usr/local/opt/asdf/libexec/asdf.sh
+elif [[ -e /opt/homebrew/opt/asdf/libexec/asdf.sh ]];then
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
 # completion
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fpath=(/usr/local/share/zsh-completions $fpath)
 fpath=(${ASDF_DIR}/completions $fpath)
 
@@ -166,8 +169,8 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 case "${OSTYPE}" in
   darwin*)
     # gcs
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    #source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    #source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
   ;;
 esac
 
@@ -186,6 +189,8 @@ alias ber='bundle exec rails'
 alias bs='bundle show'
 alias clear2="echo -e '\026\033c'"
 alias rm='trash'
+alias date='gdate'
+alias zcat='gzcat'
 
 bcd(){
   cd $(bs $1)
@@ -368,47 +373,23 @@ function peco-src () {
 zle -N peco-src
 bindkey '' peco-src
 
-##################
-# Kyashの設定
-##################
-
-# SAML認証のprofile切替え
-aws-profile-switch() {
-  local profile="$(grep '\[' ~/.aws/credentials | sed -e 's/\[//' -e 's/\]//' | peco)"
-  export AWS_PROFILE="$profile"
-}
-
-eval `ssh-agent`
-ssh-add
-
-ssm-start-session() {
-  local arg="$*"
-  local instance
-  aws ssm describe-instance-information | jq -r '.InstanceInformationList[].InstanceId' > /tmp/ssm-instances
-  instance=$(
-    aws ec2 describe-instances \
-    --instance-ids $(cat /tmp/ssm-instances) \
-    --filters "Name=instance-state-name,Values=running" |
-      jq -cr '
-        .Reservations[].Instances[] |
-          [
-            .InstanceId,
-            .NetworkInterfaces[0].PrivateIpAddress,
-            (.Tags[] | select(.Key == "Product").Value),
-            (.Tags[] | select(.Key == "Env").Value),
-            (.Tags[] | select(.Key == "Name").Value)
-          ] |
-          @tsv
-      ' | sort -bk 2 | peco --query "$arg"
-  )
-
-  test -z "$instance" && return
-  echo "---> $instance"
-  aws ssm start-session --target "$(echo $instance | awk '{print $1}')" --document-name AWS-StartInteractiveCommand --parameters command="cd ~; bash -l"
-}
-
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# aws profile
+function peco-aws-profile() {
+  local aws_profiles="default
+openlogi-admin
+openlogi-dev
+openlogi-stage
+openlogi-stage-admin
+openlogi-fraise
+openlogi-fraise-admin
+openlogi-staff
+ejima-test
+aurora-upgrade-test"
+  export AWS_PROFILE=$(echo "${aws_profiles}" | peco)
+}
 
 alias mmv='noglob zmv -W'
 
@@ -462,3 +443,8 @@ alias actest="acc++ main.cpp && oj t -S -c './a.out'"
 alias acsubmit="acc submit main.cpp -- --yes --no-open"
 alias actestrb="oj t -S -c 'ruby main.rb'"
 alias acsubmitrb="acc submit main.rb -- --yes --no-open"
+
+# aws cli completion
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
