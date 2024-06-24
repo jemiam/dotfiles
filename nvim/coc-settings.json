@@ -1,14 +1,22 @@
 {
-	"languageserver": {
-		"terraform": {
-			"command": "terraform-ls",
-			"args": ["serve"],
-			"filetypes": [
-				"terraform",
-				"tf"
-			],
-			"initializationOptions": {},
-			"settings": {}
-		}
-	}
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    },
+    "rubocop": {
+      "command": "rubocop",
+      "args": ["--lsp"],
+      "filetypes": ["ruby"]
+    }
+  },
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": ["go", "ruby", "cpp"],
+  "go.goplsOptions": {
+    "completeUnimported": true
+  },
+  "clangd.fallbackFlags": ["-std=c++20"]
 }
